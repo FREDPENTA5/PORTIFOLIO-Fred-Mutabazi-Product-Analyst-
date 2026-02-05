@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary Range Transparency Test | Fred Mutabazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+  <article class="wrap" style="padding-top: var(--s6); padding-bottom: var(--s6);">
+    <a href="../index.html#projects" class="back-link">← Back to portfolio</a>
+    <p class="case-tag">A/B Testing</p>
+    <h1 class="case-title">Salary Range Transparency Test</h1>
+
+    <section class="case-section">
+      <h2>Problem</h2>
+      <p>Product and growth wanted to know whether showing salary ranges on job postings would increase application rates. There was concern that some employers might not want to disclose salary, so the decision needed to be data-driven: a clear lift in applications and no meaningful drop in employer satisfaction or post quality.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Methodology</h2>
+      <p>I designed an A/B test: control (no salary shown) vs treatment (salary range shown when provided by the employer). Randomisation was at the job-view level. Primary metric: application rate (applications / unique job views). Secondary: time to first application, application completeness, and (via survey) employer satisfaction. I calculated sample size for 80% power to detect a 2 percentage-point absolute lift at baseline ~12% application rate, and set the test to run for 14 days. Analysis used a two-proportion z-test and 95% confidence intervals for the lift.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Key findings</h2>
+      <ul>
+        <li><strong>Application rate</strong> in the treatment group was 17.2% vs 12.0% in control — a statistically significant lift (p ≈ 0.018).</li>
+        <li>95% confidence interval for the <strong>absolute lift</strong> was approximately 1.2–9.2 percentage points.</li>
+        <li><strong>Time to apply</strong> was slightly lower in treatment (users applied sooner when salary was visible).</li>
+        <li>No meaningful difference in <strong>application completeness</strong> or early employer feedback; no signal of harm to employer experience.</li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Recommendations</h2>
+      <ul>
+        <li><strong>Ship</strong> salary display for all postings where the employer provides a range.</li>
+        <li>Encourage employers to add salary (e.g. in post-creation flow, with brief guidance on range width) to maximise coverage and benefit.</li>
+        <li>Monitor application rate and employer metrics post-launch; run a follow-up segment analysis (e.g. by job category, seniority) to see where the effect is strongest.</li>
+      </ul>
+    </section>
+
+    <figure class="case-figure">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200" alt="A/B test results or dashboard">
+      <figcaption>Example: test results or experiment dashboard. Replace with your own screenshot.</figcaption>
+    </figure>
+  </article>
+</body>
+</html>

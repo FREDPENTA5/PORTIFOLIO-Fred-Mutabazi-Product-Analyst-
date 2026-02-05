@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Health Dashboard | Fred Mutabazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+  <article class="wrap" style="padding-top: var(--s6); padding-bottom: var(--s6);">
+    <a href="../index.html#projects" class="back-link">← Back to portfolio</a>
+    <p class="case-tag">Dashboard Design</p>
+    <h1 class="case-title">Product Health Dashboard</h1>
+
+    <section class="case-section">
+      <h2>Problem</h2>
+      <p>Leadership and product needed a single place to see marketplace health: active listings, application volume, employer and job seeker engagement, and leading indicators of growth or risk. Metrics were scattered across tools and required manual pulls; there was no shared definition of “platform health” or real-time view for decision-making.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Methodology</h2>
+      <p>I worked with product and leadership to define a core set of KPIs (e.g. active job postings, new applications per day, application rate, time-to-fill, employer retention, job seeker DAU/WAU). I designed the schema and SQL for each metric, ensured consistent definitions and filters (e.g. excluding test data), and built the dashboard in Tableau with a simple layout: headline numbers at the top, then trend charts and breakdowns by segment (category, geography, experience level). The dashboard refreshed on a schedule and was shared via embedded link and weekly digest.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Key findings</h2>
+      <ul>
+        <li><strong>12 core metrics</strong> were agreed and implemented; the dashboard became the default source for “how is the marketplace doing?” in leadership and product reviews.</li>
+        <li>Real-time (or near real-time) refresh reduced time spent on manual reporting and aligned stakeholders on the same numbers.</li>
+        <li>Segment breakdowns (e.g. by job category) surfaced which parts of the marketplace were growing or underperforming, informing roadmap and sales focus.</li>
+        <li>Clear KPI definitions and documentation reduced confusion and ad hoc requests; new joiners could onboard to the metrics quickly.</li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Add <strong>alerts</strong> (e.g. when a core metric moves beyond a threshold) so issues are caught without someone opening the dashboard daily.</li>
+        <li>Extend the dashboard with <strong>cohort or retention views</strong> (e.g. employer retention by signup month) to support deeper product and growth analysis.</li>
+        <li>Revisit KPI definitions quarterly with product and leadership to keep the dashboard aligned with strategy.</li>
+      </ul>
+    </section>
+
+    <figure class="case-figure">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Product health dashboard screenshot">
+      <figcaption>Example: product health dashboard. Replace with your own Tableau or BI screenshot.</figcaption>
+    </figure>
+  </article>
+</body>
+</html>

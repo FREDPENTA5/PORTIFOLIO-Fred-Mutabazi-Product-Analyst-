@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Seeker Retention Analysis | Fred Mutabazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+  <article class="wrap" style="padding-top: var(--s6); padding-bottom: var(--s6);">
+    <a href="../index.html#projects" class="back-link">← Back to portfolio</a>
+    <p class="case-tag">User Behavior</p>
+    <h1 class="case-title">Job Seeker Retention Analysis</h1>
+
+    <section class="case-section">
+      <h2>Problem</h2>
+      <p>Job seeker 30-day retention was below target. The product and growth teams needed to know where users dropped off, which cohorts were at risk, and what actions (e.g. email, in-product nudges, UX changes) would have the biggest impact on retention.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Methodology</h2>
+      <p>I built cohorts by signup week and tracked retention (return visit or application within 7, 14, and 30 days). I analysed session depth, pages per session, and application rate by cohort and by acquisition channel. I also mapped the journey from landing → search → view → apply to find the main drop-off points and compared high-retention vs low-retention users on behaviour and context (device, location, job category).</p>
+      <p>Analysis was done in SQL and Python; cohort and funnel views were built in the analytics stack and exported to Tableau for stakeholders.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Key findings</h2>
+      <ul>
+        <li><strong>Five main drop-off points</strong> stood out: after first search (no click), after first job view (no apply), after first application (no return), and two in-app steps that I recommended product to instrument and revisit.</li>
+        <li>Users who <strong>applied at least once in the first 7 days</strong> had ~28% higher 30-day retention; early application was a strong leading indicator.</li>
+        <li><strong>Mobile-only users</strong> had lower retention than desktop or multi-device; session length and depth were lower on mobile, suggesting UX or relevance issues on small screens.</li>
+        <li>Certain <strong>acquisition channels</strong> brought in users with meaningfully higher retention; reallocating spend toward those channels was recommended.</li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Improve <strong>first-session relevance</strong> (e.g. better default search, personalised results) to increase likelihood of an application in the first 7 days.</li>
+        <li>Add or refine <strong>email and in-app nudges</strong> at the identified drop-off points (e.g. after view-without-apply, after first application).</li>
+        <li>Run a <strong>mobile-focused UX review</strong> and prioritise fixes that increase session depth and application rate on mobile.</li>
+        <li>Shift acquisition budget toward channels with higher retained users, and run small tests before scaling.</li>
+      </ul>
+    </section>
+
+    <figure class="case-figure">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200" alt="Cohort or funnel view from this analysis">
+      <figcaption>Example: cohort retention or funnel view. Replace with your own screenshot.</figcaption>
+    </figure>
+  </article>
+</body>
+</html>

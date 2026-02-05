@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Churn Prediction | Fred Mutabazi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+  <article class="wrap" style="padding-top: var(--s6); padding-bottom: var(--s6);">
+    <a href="../index.html#projects" class="back-link">← Back to portfolio</a>
+    <p class="case-tag">Predictive Analytics</p>
+    <h1 class="case-title">Employer Churn Prediction</h1>
+
+    <section class="case-section">
+      <h2>Problem</h2>
+      <p>Employer churn was hurting growth. Sales and success teams needed to know which accounts were likely to churn so they could prioritise outreach, offers, or product fixes. Reactive outreach after churn was too late; a predictive signal would allow proactive retention.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Methodology</h2>
+      <p>I defined churn as “no new job posting and no renewal within 90 days after contract end” and built a labelled dataset of employers who churned vs retained. I engineered features from product and usage data: posting frequency, application volume, time since last post, logins, support tickets, plan type, tenure. I trained a binary classification model (logistic regression and a tree-based model), validated with a time-based split to avoid leakage, and tuned for precision at a chosen recall so the success team could act on a manageable list. I documented feature importance and shared scores via a weekly export and later a simple dashboard.</p>
+    </section>
+
+    <section class="case-section">
+      <h2>Key findings</h2>
+      <ul>
+        <li>Model <strong>accuracy</strong> was ~85% on the holdout set; precision at the top decile of risk was high enough that success could focus on those accounts.</li>
+        <li><strong>Top drivers of churn risk</strong> included: long time since last job post, drop in application volume, low login frequency, and short tenure. These pointed to both “gone quiet” employers and possible product or match-quality issues.</li>
+        <li>A pilot <strong>proactive retention campaign</strong> targeting high-risk accounts (vs a control) showed ~22% reduction in churn in the treatment group, validating the use of the model.</li>
+        <li>Feature importance and segment analysis helped product and success prioritise which levers to pull (e.g. re-engagement emails, check-in calls, product improvements for low-activity segments).</li>
+      </ul>
+    </section>
+
+    <section class="case-section">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Operationalise the model: refresh scores regularly and feed a <strong>prioritised list</strong> into the success team’s workflow (e.g. CRM or task queue).</li>
+        <li>Run <strong>A/B tests</strong> on retention interventions (e.g. email, discount, product tour) for high-risk segments to learn what works best.</li>
+        <li>Re-train and re-evaluate the model periodically as behaviour and product change; add new features (e.g. NPS, support sentiment) if they become available.</li>
+      </ul>
+    </section>
+
+    <figure class="case-figure">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Churn model or campaign results">
+      <figcaption>Example: model performance or campaign results. Replace with your own screenshot.</figcaption>
+    </figure>
+  </article>
+</body>
+</html>

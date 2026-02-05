@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fred Mutabazi | Product Analyst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* BrighterMonday-inspired */
+            --accent: #E85D04;
+            --accent-hover: #D35400;
+            --accent-soft: rgba(232, 93, 4, 0.12);
+            --hero-bg: #1a1f2e;
+            --hero-text: #f8f7f4;
+            --hero-muted: #a8a6a1;
+            --bg: #f8f7f4;
+            --surface: #ffffff;
+            --text: #1a1a18;
+            --text-muted: #4a4845;
+            --border: #d8d6d2;
+            --border-strong: #9c9994;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            /* 8px spacing scale — consistent rhythm */
+            --s1: 8px;
+            --s2: 16px;
+            --s3: 24px;
+            --s4: 32px;
+            --s5: 48px;
+            --s6: 64px;
+            --s7: 80px;
+            --s8: 96px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--s4);
+        }
+
+        /* Typography — SaaS-style, Inter throughout */
+        h1 { font-family: var(--font); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: inherit; }
+        h2 { font-family: var(--font); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 600; letter-spacing: -0.01em; color: inherit; }
+        h3 { font-family: var(--font); font-size: 1.125rem; font-weight: 600; color: inherit; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Hero — high contrast, strong structure */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: var(--s8) 0;
+            background: var(--hero-bg);
+            color: var(--hero-text);
+        }
+        .hero .wrap { width: 100%; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--s6);
+            align-items: center;
+        }
+        .hero-content { position: relative; }
+        .hero-name {
+            font-family: var(--font);
+            font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+            font-weight: 700;
+            line-height: 1.08;
+            color: var(--hero-text);
+            margin-bottom: var(--s1);
+            letter-spacing: -0.02em;
+        }
+        .hero-role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: var(--s2);
+        }
+        .hero-divider {
+            width: 2.5rem;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: var(--s2);
+        }
+        .hero-tagline {
+            font-family: var(--font);
+            font-size: clamp(1.0625rem, 1.75vw, 1.25rem);
+            font-weight: 500;
+            color: var(--hero-text);
+            margin-bottom: var(--s2);
+            line-height: 1.4;
+        }
+        .hero-tagline span { color: var(--accent); font-weight: 600; }
+        .hero-subtitle {
+            font-size: 0.9375rem;
+            color: var(--hero-muted);
+            max-width: 38ch;
+            margin-bottom: var(--s4);
+            line-height: 1.65;
+        }
+        .cta-group { display: flex; gap: var(--s2); flex-wrap: wrap; }
+        .btn {
+            padding: var(--s2) var(--s3);
+            font-family: var(--font);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232, 93, 4, 0.35); text-decoration: none; color: #fff; }
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--hero-text);
+            color: var(--hero-text);
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.08); text-decoration: none; color: var(--hero-text); }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--s2);
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: var(--s3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .stat-number {
+            font-family: var(--font);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: var(--s1);
+        }
+        .stat-label { font-size: 0.8125rem; color: var(--hero-muted); font-weight: 500; }
+
+        /* Skills */
+        .skills-section { padding: var(--s7) 0; border-top: 1px solid var(--border); }
+        .section-header { max-width: 42ch; margin-bottom: var(--s5); }
+        .section-header h2 { margin-bottom: var(--s2); }
+        .section-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.65; }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--s3);
+        }
+        .skill-category {
+            background: var(--surface);
+            padding: var(--s3);
+            border: 1px solid var(--border-strong);
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .skill-category:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--border-strong); }
+        .skill-title { font-size: 1rem; font-weight: 600; margin-bottom: var(--s2); color: var(--text); }
+        .skill-list { list-style: none; }
+        .skill-list li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+        .skill-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Projects — visual hierarchy: section title → tag → project title → body */
+        .projects-section {
+            padding: var(--s7) 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+        .projects-section .section-header { margin-bottom: var(--s4); }
+        .projects-section .section-header h2 {
+            margin-bottom: var(--s2);
+            font-size: clamp(1.625rem, 2.5vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text);
+        }
+        .projects-section .section-desc {
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .project-filters {
+            display: flex;
+            gap: var(--s1);
+            margin-top: var(--s3);
+            margin-bottom: var(--s4);
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: var(--s1) var(--s2);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .filter-btn:hover { border-color: var(--border-strong); color: var(--text); }
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .projects-grid { display: grid; gap: var(--s4); }
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            gap: var(--s4);
+            align-items: start;
+            padding: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.25s ease;
+            overflow: hidden;
+        }
+        .project-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        .project-content {
+            padding: var(--s4);
+            border-left: 4px solid var(--accent);
+        }
+        /* Tag: prominent via typography — accent color, weight, spacing (no loud bg) */
+        .project-tag {
+            display: inline-block;
+            padding: 0 var(--s1) 0 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: var(--s1);
+            border-right: 2px solid var(--accent);
+            margin-right: var(--s2);
+        }
+        /* Project title: clear hierarchy with size and weight */
+        .project-title {
+            font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin-bottom: var(--s2);
+        }
+        /* Description: clearly secondary */
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: var(--s3);
+            font-size: 0.9375rem;
+            line-height: 1.65;
+        }
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--s2);
+        }
+        .metric {
+            padding: var(--s2);
+            background: var(--bg);
+            border: 1px solid var(--border);
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: var(--s1);
+            letter-spacing: -0.02em;
+        }
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s2); }
+        .tech-badge {
+            padding: 0.35rem 0.65rem;
+            background: var(--bg);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .project-link {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s1);
+            margin-top: var(--s3);
+            transition: gap 0.2s ease;
+        }
+        .project-link:hover { gap: var(--s2); text-decoration: none; }
+
+        /* About */
+        .about-section { padding: var(--s7) 0; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: var(--s6);
+            align-items: start;
+        }
+        .about-section .section-header { margin-bottom: var(--s5); }
+        .about-section h2 { margin-bottom: var(--s2); }
+        .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+        .about-text p { margin-bottom: var(--s3); }
+        .highlight-box {
+            background: var(--surface);
+            padding: var(--s4);
+            border: 1px solid var(--border-strong);
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .highlight-box h3 { color: var(--accent); margin-bottom: var(--s2); font-size: 1rem; font-weight: 600; }
+        .highlight-list { list-style: none; }
+        .highlight-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+            font-size: 0.9375rem;
+        }
+        .highlight-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: var(--s7) 0;
+            background: var(--surface);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .contact-content { max-width: 42ch; margin: 0 auto; }
+        .contact-title { margin-bottom: var(--s2); }
+        .contact-text { font-size: 1rem; color: var(--text-muted); margin-bottom: var(--s5); line-height: 1.65; }
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: var(--s3);
+            flex-wrap: wrap;
+        }
+        .contact-card {
+            background: var(--bg);
+            padding: var(--s3) var(--s4);
+            min-width: 140px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+        .contact-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: var(--text);
+        }
+        .contact-label { font-size: 0.8125rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .contact-value { color: var(--accent); font-weight: 600; font-size: 1rem; }
+
+        /* Footer */
+        footer {
+            padding: var(--s4) 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+            .project-card { grid-template-columns: 1fr; }
+            .project-content { border-left: none; border-top: 4px solid var(--accent); }
+            .project-figure { min-height: 200px; order: -1; }
+            .project-content { padding: var(--s3); }
+            .impact-metrics { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-options { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-grid">
+                <div class="hero-content reveal">
+                    <p class="hero-role">Product Analyst</p>
+                    <h1 class="hero-name">Fred Mutabazi</h1>
+                    <div class="hero-divider" aria-hidden="true"></div>
+                    <p class="hero-tagline">Turning <span>data</span> into decisions that drive growth</p>
+                    <p class="hero-subtitle">I help companies make better product decisions through rigorous analysis, user behavior insights, and business metrics that matter.</p>
+                    <div class="cta-group">
+                        <a href="#projects" class="btn btn-primary">View Case Studies</a>
+                        <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+                    </div>
+                </div>
+                <div class="stats-row reveal">
+                    <div class="stat-card">
+                        <div class="stat-number">28%</div>
+                        <div class="stat-label">Avg. retention improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15%</div>
+                        <div class="stat-label">Conversion rate increase</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">22%</div>
+                        <div class="stat-label">Churn reduction achieved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="wrap">
+            <div class="section-header reveal">
+                <h2>Core Competencies</h2>
+                <p class="section-desc">A comprehensive toolkit for product analysis, combining technical expertise with business acumen to deliver actionable insights.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <h3 class="skill-title">Data Analysis & SQL</h3>
+                    <ul class="skill-list">
+                        <li>Complex SQL queries & optimization</li>
+                        <li>Python (Pandas, NumPy)</li>
+                        <li>Statistical analysis</li>
+                        <li>Cohort & funnel analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 class="skill-title">Data Visualization</h3>
+                    <ul class="skill-list">
+                        <li>Tableau & Power BI</li>
+                        <li>Google Analytics & Mixpanel</li>
+                        <li>Dashboard design</li>
+                        <li>Data storytelling</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 class="skill-title">Product Metrics</h3>
+                    <ul class="skill-list">
+                        <li>KPI definition & tracking</li>
+                        <li>North Star metrics</li>
+                        <li>User engagement analysis</li>
+                        <li>Revenue metrics</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 class="skill-title">Experimentation</h3>
+                    <ul class="skill-list">
+                        <li>A/B test design & analysis</li>
+                        <li>Statistical significance</li>
+                        <li>Multivariate testing</li>
+                        <li>Feature validation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="wrap">
+            <div class="section-header reveal">
+                <h2>Featured Case Studies</h2>
+                <p class="section-desc">Real-world product analysis projects demonstrating impact across user retention, conversion optimization, and strategic decision-making.</p>
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active">All Projects</button>
+                <button class="filter-btn">User Behavior</button>
+                <button class="filter-btn">A/B Testing</button>
+                <button class="filter-btn">Market Analysis</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal" data-tag="Market Analysis">
+                    <div class="project-content">
+                        <span class="project-tag">Market Analysis</span>
+                        <h3 class="project-title">East African Job Market Analysis</h3>
+                        <p class="project-description">Comprehensive analysis of job posting trends across Kenya, Uganda, and Tanzania. Identified high-demand sectors, geographic gaps, and underserved user segments to inform product strategy and market expansion opportunities.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">3</div>
+                                <div class="metric-label">Market Segments Identified</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">40%</div>
+                                <div class="metric-label">Growth in Tech Jobs</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Tableau</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Market Research</span>
+                        </div>
+                        <a href="case-studies/market-analysis.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <!-- Replace src with your own dashboard/screenshot: e.g. images/market-analysis.png -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="Dashboard or analysis overview" loading="lazy" />
+                    </figure>
+                </div>
+
+                <div class="project-card reveal" data-tag="User Behavior">
+                    <div class="project-content">
+                        <span class="project-tag">User Behavior</span>
+                        <h3 class="project-title">Job Seeker Retention Analysis</h3>
+                        <p class="project-description">Deep dive into user behavior patterns to identify drop-off points in the job search journey. Analyzed cohorts, session data, and application patterns to develop targeted retention strategies.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">28%</div>
+                                <div class="metric-label">30-Day Retention Increase</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">5</div>
+                                <div class="metric-label">Key Drop-off Points Found</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Cohort Analysis</span>
+                            <span class="tech-badge">Google Analytics</span>
+                        </div>
+                        <a href="case-studies/retention.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Retention or cohort analysis overview" loading="lazy" />
+                    </figure>
+                </div>
+
+                <div class="project-card reveal" data-tag="A/B Testing">
+                    <div class="project-content">
+                        <span class="project-tag">A/B Testing</span>
+                        <h3 class="project-title">Salary Range Transparency Test</h3>
+                        <p class="project-description">Designed and executed A/B test to measure impact of adding salary ranges to job postings. Analyzed application rates, time-to-apply, and applicant quality metrics across treatment and control groups.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">15%</div>
+                                <div class="metric-label">Application Rate Increase</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">99%</div>
+                                <div class="metric-label">Statistical Confidence</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">A/B Testing</span>
+                            <span class="tech-badge">Statistical Analysis</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Experimentation</span>
+                        </div>
+                        <a href="case-studies/ab-test.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800" alt="A/B test or experiment overview" loading="lazy" />
+                    </figure>
+                </div>
+
+                <div class="project-card reveal" data-tag="Dashboard Design">
+                    <div class="project-content">
+                        <span class="project-tag">Dashboard Design</span>
+                        <h3 class="project-title">Product Health Dashboard</h3>
+                        <p class="project-description">Built executive dashboard tracking key marketplace metrics including active listings, application velocity, employer engagement, and platform health indicators. Enabled real-time decision-making for product and business teams.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">12</div>
+                                <div class="metric-label">Key Metrics Tracked</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Real-time</div>
+                                <div class="metric-label">Data Refresh Rate</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Tableau</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">KPI Design</span>
+                            <span class="tech-badge">Data Modeling</span>
+                        </div>
+                        <a href="case-studies/dashboard.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Product health dashboard overview" loading="lazy" />
+                    </figure>
+                </div>
+
+                <div class="project-card reveal" data-tag="Predictive Analytics">
+                    <div class="project-content">
+                        <span class="project-tag">Predictive Analytics</span>
+                        <h3 class="project-title">Employer Churn Prediction</h3>
+                        <p class="project-description">Developed predictive model to identify at-risk employer accounts based on posting frequency, engagement metrics, and platform usage patterns. Enabled proactive retention campaigns and account management prioritization.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">22%</div>
+                                <div class="metric-label">Churn Reduction</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">85%</div>
+                                <div class="metric-label">Model Accuracy</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">Predictive Modeling</span>
+                            <span class="tech-badge">Feature Engineering</span>
+                        </div>
+                        <a href="case-studies/churn.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Churn or predictive model overview" loading="lazy" />
+                    </figure>
+                </div>
+
+                <div class="project-card reveal" data-tag="Product Strategy">
+                    <div class="project-content">
+                        <span class="project-tag">Product Strategy</span>
+                        <h3 class="project-title">Feature Prioritization Framework</h3>
+                        <p class="project-description">Created data-driven framework combining user impact scores, development effort, and strategic alignment to optimize product roadmap decisions. Analyzed user feedback, usage data, and competitive landscape.</p>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <div class="metric-value">30+</div>
+                                <div class="metric-label">Features Evaluated</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">3x</div>
+                                <div class="metric-label">Roadmap Efficiency Gain</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Product Strategy</span>
+                            <span class="tech-badge">Data Modeling</span>
+                            <span class="tech-badge">User Research</span>
+                            <span class="tech-badge">Prioritization</span>
+                        </div>
+                        <a href="case-studies/prioritization.html" class="project-link">View Full Case Study →</a>
+                    </div>
+                    <figure class="project-figure">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Feature prioritization or roadmap overview" loading="lazy" />
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="wrap">
+            <div class="about-grid">
+                <div class="reveal">
+                    <h2>About Me</h2>
+                    <div class="about-text">
+                        <p>I'm a product analyst passionate about transforming raw data into strategic insights that drive product excellence. My approach combines quantitative rigor with a deep understanding of user psychology and market dynamics.</p>
+                        <p>With experience across marketplace platforms, SaaS products, and consumer applications, I've helped teams make better decisions about what to build, how to optimize, and where to invest resources for maximum impact.</p>
+                        <p>I believe the best product decisions come from a blend of data, intuition, and empathy for users. Whether it's designing experiments, building dashboards, or analyzing user cohorts, I focus on delivering insights that are both actionable and aligned with business objectives.</p>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="highlight-box">
+                        <h3>What I Bring</h3>
+                        <ul class="highlight-list">
+                            <li>Deep expertise in SQL and data analysis</li>
+                            <li>Track record of measurable business impact</li>
+                            <li>Strong communication with stakeholders</li>
+                            <li>Experience with A/B testing and experimentation</li>
+                            <li>Passion for marketplace and platform dynamics</li>
+                            <li>Understanding of East African tech ecosystem</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="wrap">
+            <div class="contact-content">
+                <h2 class="contact-title reveal">Let's Work Together</h2>
+                <p class="contact-text reveal">I'm currently open to product analyst opportunities, especially with companies building impactful products in emerging markets. If you're looking for someone who can turn data into strategic advantage, let's connect.</p>
+                <div class="contact-options reveal">
+                    <a href="mailto:fredmeghanpenta@gmail.com" class="contact-card">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">fredmeghanpenta@gmail.com</div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fredpenta" target="_blank" rel="noopener" class="contact-card">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">linkedin.com/in/fredpenta</div>
+                    </a>
+                    <a href="https://github.com/fredpenta5" target="_blank" rel="noopener" class="contact-card">
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">Fred Penta 5</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <p>&copy; <span id="year"></span> Fred Mutabazi. Product Analyst.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80)
+                    el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const value = btn.textContent.trim();
+                projectCards.forEach(card => {
+                    const tag = card.getAttribute('data-tag');
+                    card.style.display = (value === 'All Projects' || tag === value) ? 'grid' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
